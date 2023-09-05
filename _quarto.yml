@@ -2,18 +2,31 @@ project:
   type: website
 
 website:
-  title: "EPH_ubasociales"
+  title: "Taller EPH en R - UBA Sociales"
   navbar:
-    left:
+    background: "#973267"
+    right:
       - href: index.qmd
-        text: Home
-      - about.qmd
+        text: "Inicio"
+      - text: "Equipo"
+        file: Equipo.qmd
+      - text: "Slides"
+        file: slides.html
+      - text: "Práctica"
+        file: Tallereph01.html
+
+    tools:
+      - icon: github
+        href: https://github.com/SoyAndrea/tallerEPH
+
+
 
 format:
   html:
-    theme: cosmo
+    theme: minty
     css: styles.css
     toc: true
+    lang: es
 
 editor: visual
 

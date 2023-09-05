@@ -2,7 +2,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "EPH_ubasociales",
+    "title": "Introducción al Análisis de la Encuesta Permanente de Hogares (EPH) con R",
     "section": "",
     "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
   },
@@ -12,5 +12,12 @@
     "title": "About",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "Equipo.html",
+    "href": "Equipo.html",
+    "title": "¿Quiénes somos?",
+    "section": "",
+    "text": "Betsabe Cohen\n\n\n\nBetsabe Cohen\n\n\nSocióloga especializada en gestión y políticas culturales y maestranda en Generación y Análisis de Información Estadística de UNTREF. Actualmente se desempeña como analista de datos en el Ministerio de Cultura de la Nación y colabora en diversos proyectos de investigación de manera independiente.\n\n\nAndrea Gomez Vargas\n\n\n\nAndrea Gómez Vargas"
   }
 ]

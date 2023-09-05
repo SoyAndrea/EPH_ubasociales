@@ -1,11 +1,4 @@
 ---
-title: "EPH_ubasociales"
+title: "Introducción al Análisis de la Encuesta Permanente de Hogares (EPH) con R"
+autor: "Nucleo de Innovación Social & R-Ladies Buenos Aires"
 ---
-
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-```{r}
-1 + 1
-```

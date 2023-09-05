@@ -1,0 +1,13 @@
+---
+title: "¿Quiénes somos?"
+---
+
+### Betsabe Cohen 
+
+![Betsabe Cohen](https://rladiesba.netlify.app/author/betsabe-cohen/avatar_hue039aedc9d3c7fc9c6ebaa365f220822_828839_270x270_fill_lanczos_center_2.png){width=40% style='border-radius: 80%; aling: center;'}
+
+Socióloga especializada en gestión y políticas culturales y maestranda en Generación y Análisis de Información Estadística de UNTREF. Actualmente se desempeña como analista de datos en el Ministerio de Cultura de la Nación y colabora en diversos proyectos de investigación de manera independiente.
+
+### Andrea Gomez Vargas
+
+![Andrea Gómez Vargas](https://soyandrea.netlify.app/author/andrea/avatar_hu25ef211387e0b2a6d22fb7d5b232b00e_2192523_270x270_fill_q75_lanczos_center.jpg){width=40% style='border-radius: 80%;'}
