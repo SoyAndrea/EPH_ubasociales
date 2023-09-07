@@ -13,7 +13,7 @@ website:
       - text: "Slides"
         file: slides.html
       - text: "Práctica"
-        file: Tallereph01.html
+        file: Práctica.qmd
 
     tools:
       - icon: github
@@ -27,6 +27,8 @@ format:
     css: styles.css
     toc: true
     lang: es
+    linkcolor: "#973267" 
+    fontsize: 13pt
 
 editor: visual
 
