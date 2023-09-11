@@ -12,12 +12,13 @@ format:
 
 En este taller vamos a aprender a:
 
-1. Cargar los datos directamente desde nuestra consola de R usando el paquete `{eph}`
-2. Manipularlos usando `dplyr` de `{tidyverse}` para observar indicadores básicos de trabajo
-3. Construir una tabla usando la librería de gramática de tablas `{gt}`
+1.  Cargar los datos directamente desde nuestra consola de R usando el paquete `{eph}`
+2.  Manipularlos usando `dplyr` de `{tidyverse}` para observar indicadores básicos de trabajo
+3.  Construir una tabla usando la librería de gramática de tablas `{gt}`
+
+> [Descarga la práctica guiada en .Rmd](https://drive.google.com/drive/folders/1lWlTc6u-uhUWE5VcuCQRysoSNDmV5HGi?usp=sharing)
 
 # Antes de arrancar
-
 
 Para poder trabajar ordenadamente te recomendamos:
 
@@ -65,28 +66,23 @@ ind_2023_1 <- get_microdata(
 )
 
 ```
-En caso que no quieras o puedas usar este paquete podes descargar las bases de microdatos en el sitio del indec en la sección Bases de datos y descargar [EPH continua](https://www.indec.gob.ar/indec/web/Institucional-Indec-BasesDeDatos)
 
+En caso que no quieras o puedas usar este paquete podes descargar las bases de microdatos en el sitio del indec en la sección Bases de datos y descargar [EPH continua](https://www.indec.gob.ar/indec/web/Institucional-Indec-BasesDeDatos)
 
 Vamos a reproducir la tabla 1.1 del [Informe de Mercado de trabajo del primer trimestre 2023](https://www.indec.gob.ar/uploads/informesdeprensa/mercado_trabajo_eph_1trim234267B9F5D1.pdf):
 
 # Definiciones Básicas
 
-Antes de cálcular los indicadores tengamos en cuenta las siguientes definiciones básicas: 
+Antes de cálcular los indicadores tengamos en cuenta las siguientes definiciones de lo que vamos a calcular:
 
-*   **Población:** es el total de unidades al que expande la muestra [PONDERA].
-*   **Población Ocupada:** conjunto de personas que tienen por lo menos una ocupación
-*   **Población Desocupada:** personas que, no teniendo ocupación, están buscando activamente trabajo y
-están disponibles para trabajar.
-*   **Población Economicamente Activa**(PEA): la integran las personas que tienen una ocupación o que, sin tenerla,
-la están buscando activamente. Está compuesta por la población ocupada más la población desocupada.
-*   **Población Ocupada demandante de empleo:** población ocupada que busca activamente otra ocupación. 
-* **Población Subocupada:** se refiere a la subocupación por insuficiencia de horas, visible u horaria, y
-comprende a las personas ocupadas que trabajan menos de 35 horas semanales por causas involuntarias y que están dispuestas a trabajar más horas.
-    *   **Población Subocupada demandante**: población subocupada (por causas involuntarias y dispuesta a
-    trabajar más horas) que además busca activamente otra ocupación.
-    *   **Población Subocupada no demandante**: población subocupada (por causas involuntarias y dispuesta a
-trabajar más horas) que no está en la búsqueda activa de otra ocupación. 
+-   **Población:** es el total de unidades al que expande la muestra.
+-   **Población Ocupada:** conjunto de personas que tienen por lo menos una ocupación
+-   **Población Desocupada:** personas que, no teniendo ocupación, están buscando activamente trabajo y están disponibles para trabajar.
+-   **Población Economicamente Activa**(PEA): la integran las personas que tienen una ocupación o que, sin tenerla, la están buscando activamente. Está compuesta por la población ocupada más la población desocupada.
+-   **Población Ocupada demandante de empleo:** población ocupada que busca activamente otra ocupación.
+-   **Población Subocupada:** se refiere a la subocupación por insuficiencia de horas, visible u horaria, y comprende a las personas ocupadas que trabajan menos de 35 horas semanales por causas involuntarias y que están dispuestas a trabajar más horas.
+    -   **Población Subocupada demandante**: población subocupada (por causas involuntarias y dispuesta a trabajar más horas) que además busca activamente otra ocupación.
+    -   **Población Subocupada no demandante**: población subocupada (por causas involuntarias y dispuesta a trabajar más horas) que no está en la búsqueda activa de otra ocupación.
 
 > Tanto la ocupación como la desocupación constituyen lo que se denomina **condición de actividad** que define la situación en que se encuentran las personas con respecto a su participación o no en la actividad económica.
 
@@ -94,16 +90,16 @@ trabajar más horas) que no está en la búsqueda activa de otra ocupación.
 
 Primero creamos una tabla con los siguientes indicadores de resumen (tomamos de base las definiciones mencionadas anteriormente):
 
-*   Población
-*   Ocupados
-*   Desocupados
-*   Población Economicamente Activa (PEA)
-*   Ocupados demandantes
-*   Subocupados (demandantes, no demandantes y total)
+-   Población
+-   Ocupados
+-   Desocupados
+-   Población Economicamente Activa (PEA)
+-   Ocupados demandantes
+-   Subocupados (demandantes, no demandantes y total)
 
 Estos niveles nos van a permitir calcular las tasas de forma sencilla.
 
-> Para obtener cualquier tasa necesitamos crear un numerador y un denominador. Por ejemplo: $\text{Tasa de empleo: }  Ocupados/Población$.
+> Para obtener cualquier tasa necesitamos crear un numerador y un denominador. Por ejemplo: $\text{Tasa de empleo = } Ocupados/Población$.
 
 Al ser una muestra en la EPH trabajamos con el total expandido por su ponderador, en este caso lo encontramos en la variable **PONDERA**.
 
@@ -111,23 +107,23 @@ Al ser una muestra en la EPH trabajamos con el total expandido por su ponderador
 
 Para hacer la tabla vamos a trabajar con las siguientes variables de la base EPH:
 
-- PONDERA: Es el factor de expansión para cada unidad de análisis
-- ESTADO: Indica la condición de actividad y puede tomar los valores: 
-  - 0 = Entrevista individual no realizada (no respuesta al cuestionario individual)
-  - 1 = Ocupado
-  - 2 = Desocupado
-  - 3 = Inactivo
-  - 4 = Menor de 10 años
-- PP03J: Es la pregunta: _Aparte de este/os trabajo/s, ¿estuvo buscando algún empleo / ocupación /actividad?_, que toma los valores: 
-  - 1 = Sí
-  - 2 = No
-  - 9 = Ns/Nr
-- INTENSI: Refiere a la intensidad de la carga horaria laboral y cuyas categorías son:
-  - 1 = Subocupado por insuficiencia  horaria
-  - 2 = Ocupado pleno
-  - 3 = Sobreocupado
-  - 4 = Ocupado que no trabajó en la semana
-  - 9 = Ns/Nr
+-   PONDERA: Es el factor de expansión para cada unidad de análisis
+-   ESTADO: Indica la condición de actividad y puede tomar los valores:
+    -   0 = Entrevista individual no realizada (no respuesta al cuestionario individual)
+    -   1 = Ocupado
+    -   2 = Desocupado
+    -   3 = Inactivo
+    -   4 = Menor de 10 años
+-   PP03J: Es la pregunta: *Aparte de este/os trabajo/s, ¿estuvo buscando algún empleo / ocupación /actividad?*, que toma los valores:
+    -   1 = Sí
+    -   2 = No
+    -   9 = Ns/Nr
+-   INTENSI: Refiere a la intensidad de la carga horaria laboral y cuyas categorías son:
+    -   1 = Subocupado por insuficiencia horaria
+    -   2 = Ocupado pleno
+    -   3 = Sobreocupado
+    -   4 = Ocupado que no trabajó en la semana
+    -   9 = Ns/Nr
 
 # Tabla resumen
 
@@ -221,6 +217,7 @@ tabla_3 <- bind_rows(tabla_1,tabla_2)
 
 tabla_3
 ```
+
 Ya tenemos los datos que necesitamos pero parece que la tabla estuviera "acostada". Para que se ponga de pie o estire a lo largo vamos a usar la función `pivot_longer`
 
 ```{r}
@@ -233,7 +230,6 @@ tabla_3 <- tabla_3 |>
 tabla_3
 
 ```
-
 
 Vamos multiplicar por 100 el valor de la tasa ya que por lo general se expresa de esta forma, el cual redondeamos a un decimal.
 
@@ -259,13 +255,11 @@ tabla_3
   
 ```
 
-
->  Las funciones `pivot_longer` y `pivot_wider` nos ayudan a estirar y alargar los datos para saber más sobre ellas te recomendamos la lectura de [esta viñeta](https://tidyr.tidyverse.org/articles/pivot.html) donde vas a encontrar varios ejemplos.
+> Las funciones `pivot_longer` y `pivot_wider` nos ayudan a estirar y alargar los datos para saber más sobre ellas te recomendamos la lectura de [esta viñeta](https://tidyr.tidyverse.org/articles/pivot.html) donde vas a encontrar varios ejemplos.
 
 # Comunicación del dato
 
 Ahora vamos a darle un poco de estilo y color con el paquete de "gramática de tablas" `{gt}`
-
 
 ```{r message=FALSE, warning=FALSE}
 
@@ -315,11 +309,10 @@ tabla_4
 
 ```
 
-# Licencia 
+# Licencia
 
 Este taller está a disposición del público bajo licencias de código abierto. Toda la documentación y los materiales publicados están disponibles bajo una licencia **CC BY-SA-NC**.
 
 A continuación, puedes leer más sobre la [licencia de Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 ![Licencia de Creative Commons](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png){width="20%" fig-align="left"}
-

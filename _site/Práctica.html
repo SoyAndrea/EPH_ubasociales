@@ -133,6 +133,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link active" href="./Práctica.html" rel="" target="" aria-current="page">
  <span class="menu-text">Práctica</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Licencia.html" rel="" target="">
+ <span class="menu-text">Licencia</span></a>
+  </li>  
 </ul>
             <div class="quarto-navbar-tools">
     <a href="https://github.com/SoyAndrea/tallerEPH" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
@@ -208,6 +212,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Manipularlos usando <code>dplyr</code> de <code>{tidyverse}</code> para observar indicadores básicos de trabajo</li>
 <li>Construir una tabla usando la librería de gramática de tablas <code>{gt}</code></li>
 </ol>
+<blockquote class="blockquote">
+<p><a href="https://drive.google.com/drive/folders/1lWlTc6u-uhUWE5VcuCQRysoSNDmV5HGi?usp=sharing">Descarga la práctica guiada en .Rmd</a></p>
+</blockquote>
 </section>
 <section id="antes-de-arrancar" class="level1">
 <h1>Antes de arrancar</h1>
@@ -258,9 +265,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="definiciones-básicas" class="level1">
 <h1>Definiciones Básicas</h1>
-<p>Antes de cálcular los indicadores tengamos en cuenta las siguientes definiciones básicas:</p>
+<p>Antes de cálcular los indicadores tengamos en cuenta las siguientes definiciones de lo que vamos a calcular:</p>
 <ul>
-<li><strong>Población:</strong> es el total de unidades al que expande la muestra [PONDERA].</li>
+<li><strong>Población:</strong> es el total de unidades al que expande la muestra.</li>
 <li><strong>Población Ocupada:</strong> conjunto de personas que tienen por lo menos una ocupación</li>
 <li><strong>Población Desocupada:</strong> personas que, no teniendo ocupación, están buscando activamente trabajo y están disponibles para trabajar.</li>
 <li><strong>Población Economicamente Activa</strong>(PEA): la integran las personas que tienen una ocupación o que, sin tenerla, la están buscando activamente. Está compuesta por la población ocupada más la población desocupada.</li>
@@ -288,7 +295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Estos niveles nos van a permitir calcular las tasas de forma sencilla.</p>
 <blockquote class="blockquote">
-<p>Para obtener cualquier tasa necesitamos crear un numerador y un denominador. Por ejemplo: <span class="math inline">\(\text{Tasa de empleo: } Ocupados/Población\)</span>.</p>
+<p>Para obtener cualquier tasa necesitamos crear un numerador y un denominador. Por ejemplo: <span class="math inline">\(\text{Tasa de empleo = } Ocupados/Población\)</span>.</p>
 </blockquote>
 <p>Al ser una muestra en la EPH trabajamos con el total expandido por su ponderador, en este caso lo encontramos en la variable <strong>PONDERA</strong>.</p>
 <section id="variables-de-la-base-eph" class="level2">
@@ -1318,24 +1325,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>tabla_4  </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="uibraessyl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="ximbmudvrc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#uibraessyl table {
+#ximbmudvrc table {
   font-family: Montserrat, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#uibraessyl thead, #uibraessyl tbody, #uibraessyl tfoot, #uibraessyl tr, #uibraessyl td, #uibraessyl th {
+#ximbmudvrc thead, #ximbmudvrc tbody, #ximbmudvrc tfoot, #ximbmudvrc tr, #ximbmudvrc td, #ximbmudvrc th {
   border-style: none;
 }
 
-#uibraessyl p {
+#ximbmudvrc p {
   margin: 0;
   padding: 0;
 }
 
-#uibraessyl .gt_table {
+#ximbmudvrc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1361,12 +1368,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#uibraessyl .gt_caption {
+#ximbmudvrc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#uibraessyl .gt_title {
+#ximbmudvrc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1378,7 +1385,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#uibraessyl .gt_subtitle {
+#ximbmudvrc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1390,7 +1397,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#uibraessyl .gt_heading {
+#ximbmudvrc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1402,13 +1409,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#uibraessyl .gt_bottom_border {
+#ximbmudvrc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#uibraessyl .gt_col_headings {
+#ximbmudvrc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1423,7 +1430,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#uibraessyl .gt_col_heading {
+#ximbmudvrc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1443,7 +1450,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#uibraessyl .gt_column_spanner_outer {
+#ximbmudvrc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1455,15 +1462,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#uibraessyl .gt_column_spanner_outer:first-child {
+#ximbmudvrc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#uibraessyl .gt_column_spanner_outer:last-child {
+#ximbmudvrc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#uibraessyl .gt_column_spanner {
+#ximbmudvrc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1475,11 +1482,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#uibraessyl .gt_spanner_row {
+#ximbmudvrc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#uibraessyl .gt_group_heading {
+#ximbmudvrc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1505,7 +1512,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#uibraessyl .gt_empty_group_heading {
+#ximbmudvrc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1520,15 +1527,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#uibraessyl .gt_from_md > :first-child {
+#ximbmudvrc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#uibraessyl .gt_from_md > :last-child {
+#ximbmudvrc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#uibraessyl .gt_row {
+#ximbmudvrc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1547,7 +1554,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#uibraessyl .gt_stub {
+#ximbmudvrc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1560,7 +1567,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#uibraessyl .gt_stub_row_group {
+#ximbmudvrc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1574,15 +1581,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#uibraessyl .gt_row_group_first td {
+#ximbmudvrc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#uibraessyl .gt_row_group_first th {
+#ximbmudvrc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#uibraessyl .gt_summary_row {
+#ximbmudvrc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1592,16 +1599,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#uibraessyl .gt_first_summary_row {
+#ximbmudvrc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#uibraessyl .gt_first_summary_row.thick {
+#ximbmudvrc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#uibraessyl .gt_last_summary_row {
+#ximbmudvrc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1611,7 +1618,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#uibraessyl .gt_grand_summary_row {
+#ximbmudvrc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1621,7 +1628,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#uibraessyl .gt_first_grand_summary_row {
+#ximbmudvrc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1631,7 +1638,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#uibraessyl .gt_last_grand_summary_row_top {
+#ximbmudvrc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1641,11 +1648,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#uibraessyl .gt_striped {
+#ximbmudvrc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#uibraessyl .gt_table_body {
+#ximbmudvrc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1654,7 +1661,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#uibraessyl .gt_footnotes {
+#ximbmudvrc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1668,7 +1675,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#uibraessyl .gt_footnote {
+#ximbmudvrc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1677,7 +1684,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#uibraessyl .gt_sourcenotes {
+#ximbmudvrc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1691,7 +1698,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#uibraessyl .gt_sourcenote {
+#ximbmudvrc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1699,63 +1706,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#uibraessyl .gt_left {
+#ximbmudvrc .gt_left {
   text-align: left;
 }
 
-#uibraessyl .gt_center {
+#ximbmudvrc .gt_center {
   text-align: center;
 }
 
-#uibraessyl .gt_right {
+#ximbmudvrc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#uibraessyl .gt_font_normal {
+#ximbmudvrc .gt_font_normal {
   font-weight: normal;
 }
 
-#uibraessyl .gt_font_bold {
+#ximbmudvrc .gt_font_bold {
   font-weight: bold;
 }
 
-#uibraessyl .gt_font_italic {
+#ximbmudvrc .gt_font_italic {
   font-style: italic;
 }
 
-#uibraessyl .gt_super {
+#ximbmudvrc .gt_super {
   font-size: 65%;
 }
 
-#uibraessyl .gt_footnote_marks {
+#ximbmudvrc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#uibraessyl .gt_asterisk {
+#ximbmudvrc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#uibraessyl .gt_indent_1 {
+#ximbmudvrc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#uibraessyl .gt_indent_2 {
+#ximbmudvrc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#uibraessyl .gt_indent_3 {
+#ximbmudvrc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#uibraessyl .gt_indent_4 {
+#ximbmudvrc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#uibraessyl .gt_indent_5 {
+#ximbmudvrc .gt_indent_5 {
   text-indent: 25px;
 }
 </style>

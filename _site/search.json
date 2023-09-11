@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Introducción al Análisis de la Encuesta Permanente de Hogares (EPH) con R",
     "section": "",
-    "text": "Taller organizado por R-Ladies Buenos Aires & el Núcleo de Innovaciòn Social para del ciclo de formaciòn complementaria de la carrera de Sociologìa de la Facultad de Ciencias Sociales de la UBA.\nEn esta ocasión vamos a presentar la potencia de la EPH y {tidyverse} y a mostrarles cómo podemos obtener información directamente con el paquete {eph} y traducirla en indicadores para el análisis de ciencias sociales.\n\nLICENCIA\nEste taller está a disposición del público bajo licencias de código abierto. Toda la documentación y los materiales publicados en este repositorio están disponibles bajo una licencia CC BY-SA-NC.\nA continuación, puedes leer más sobre la licencia de Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional.\n\n\n\nLicencia de Creative Commons"
+    "text": "Taller organizado por R-Ladies Buenos Aires & el Núcleo de Innovaciòn Social para del ciclo de formaciòn complementaria de la carrera de Sociologìa de la Facultad de Ciencias Sociales de la UBA.\nEn esta ocasión vamos a presentar la potencia de la EPH y {tidyverse} y a mostrarles cómo podemos obtener información directamente con el paquete {eph} y traducirla en indicadores para el análisis de ciencias sociales.\n\n\n\nLicencia de Creative Commons"
   },
   {
     "objectID": "about.html",
@@ -25,7 +25,7 @@
     "href": "Práctica.html",
     "title": "Práctica EPH",
     "section": "",
-    "text": "En este taller vamos a aprender a:\n\nCargar los datos directamente desde nuestra consola de R usando el paquete {eph}\nManipularlos usando dplyr de {tidyverse} para observar indicadores básicos de trabajo\nConstruir una tabla usando la librería de gramática de tablas {gt}"
+    "text": "En este taller vamos a aprender a:\n\nCargar los datos directamente desde nuestra consola de R usando el paquete {eph}\nManipularlos usando dplyr de {tidyverse} para observar indicadores básicos de trabajo\nConstruir una tabla usando la librería de gramática de tablas {gt}\n\n\nDescarga la práctica guiada en .Rmd"
   },
   {
     "objectID": "Práctica.html#setup-librerías",
@@ -40,5 +40,12 @@
     "title": "Práctica EPH",
     "section": "Variables de la Base EPH",
     "text": "Variables de la Base EPH\nPara hacer la tabla vamos a trabajar con las siguientes variables de la base EPH:\n\nPONDERA: Es el factor de expansión para cada unidad de análisis\nESTADO: Indica la condición de actividad y puede tomar los valores:\n\n0 = Entrevista individual no realizada (no respuesta al cuestionario individual)\n1 = Ocupado\n2 = Desocupado\n3 = Inactivo\n4 = Menor de 10 años\n\nPP03J: Es la pregunta: Aparte de este/os trabajo/s, ¿estuvo buscando algún empleo / ocupación /actividad?, que toma los valores:\n\n1 = Sí\n2 = No\n9 = Ns/Nr\n\nINTENSI: Refiere a la intensidad de la carga horaria laboral y cuyas categorías son:\n\n1 = Subocupado por insuficiencia horaria\n2 = Ocupado pleno\n3 = Sobreocupado\n4 = Ocupado que no trabajó en la semana\n9 = Ns/Nr"
+  },
+  {
+    "objectID": "Licencia.html",
+    "href": "Licencia.html",
+    "title": "Licencia",
+    "section": "",
+    "text": "Este taller está a disposición del público bajo licencias de código abierto. Toda la documentación y los materiales publicados están disponibles bajo una licencia CC BY-SA-NC.\nA continuación, puedes leer más sobre la licencia de Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional.\n\n\n\nLicencia de Creative Commons"
   }
 ]
