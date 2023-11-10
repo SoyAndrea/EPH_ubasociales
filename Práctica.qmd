@@ -59,11 +59,9 @@ Vamos a arrancar descargando los datos con la función `get_microdata()`. En est
 ```{r getdata}
 ind_2023_1 <- get_microdata(
   year = 2023,
-  trimester = 1,
+  period = 1,
   type = "individual",
-  vars = "all",
-  destfile = NA
-)
+  vars = "all")
 
 ```
 
@@ -177,11 +175,9 @@ Ahora repetimos la operación con lo datos de 2022
 # obtener los datos
 ind_2022 <- get_microdata(
   year = 2022,
-  trimester = c(1:4), # le decimos que traiga todos
+  period = c(1:4), # le decimos que traiga todos
   type = "individual",
-  vars = "all",
-  destfile = NA
-)
+  vars = "all")
 
 
 tabla_2 <- ind_2022 |> 

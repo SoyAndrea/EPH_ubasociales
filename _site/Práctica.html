@@ -254,11 +254,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ind_2023_1 <span class="ot">&lt;-</span> <span class="fu">get_microdata</span>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2023</span>,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">trimester =</span> <span class="dv">1</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">period =</span> <span class="dv">1</span>,</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"individual"</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="st">"all"</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">destfile =</span> <span class="cn">NA</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="st">"all"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>En caso que no quieras o puedas usar este paquete podes descargar las bases de microdatos en el sitio del indec en la sección Bases de datos y descargar <a href="https://www.indec.gob.ar/indec/web/Institucional-Indec-BasesDeDatos">EPH continua</a></p>
 <p>Vamos a reproducir la tabla 1.1 del <a href="https://www.indec.gob.ar/uploads/informesdeprensa/mercado_trabajo_eph_1trim234267B9F5D1.pdf">Informe de Mercado de trabajo del primer trimestre 2023</a>:</p>
@@ -516,32 +514,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># obtener los datos</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ind_2022 <span class="ot">&lt;-</span> <span class="fu">get_microdata</span>(</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2022</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">trimester =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>), <span class="co"># le decimos que traiga todos</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">period =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>), <span class="co"># le decimos que traiga todos</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"individual"</span>,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="st">"all"</span>,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">destfile =</span> <span class="cn">NA</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>tabla_2 <span class="ot">&lt;-</span> ind_2022 <span class="sc">|&gt;</span> </span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ANO4,TRIMESTRE) <span class="sc">|&gt;</span> </span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Poblacion          =</span> <span class="fu">sum</span>(PONDERA),</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">Ocupacion          =</span> <span class="fu">sum</span>(PONDERA[ESTADO <span class="sc">==</span> <span class="dv">1</span>]),</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">Desocupacion       =</span> <span class="fu">sum</span>(PONDERA[ESTADO <span class="sc">==</span> <span class="dv">2</span>]),</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">PEA                =</span> Ocupacion <span class="sc">+</span> Desocupacion,</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>            <span class="at">Ocupacion_demandate =</span> <span class="fu">sum</span>(PONDERA[ESTADO <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> PP03J <span class="sc">==</span><span class="dv">1</span>]),</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>            <span class="at">Suboc_demandante   =</span> <span class="fu">sum</span>(PONDERA[ESTADO <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> INTENSI <span class="sc">==</span><span class="dv">1</span> <span class="sc">&amp;</span> PP03J<span class="sc">==</span><span class="dv">1</span>]),</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>            <span class="at">Suboc_no_demand    =</span> <span class="fu">sum</span>(PONDERA[ESTADO <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> INTENSI <span class="sc">==</span><span class="dv">1</span> <span class="sc">&amp;</span> PP03J <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">9</span>)]),</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>            <span class="at">Subocupacion       =</span> Suboc_demandante <span class="sc">+</span> Suboc_no_demand) <span class="sc">|&gt;</span> </span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">'Actividad'</span>                  <span class="ot">=</span> PEA<span class="sc">/</span>Poblacion,</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>         <span class="st">'Empleo'</span>                     <span class="ot">=</span> Ocupacion<span class="sc">/</span>Poblacion,</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>         <span class="st">'Desocupación'</span>               <span class="ot">=</span> Desocupacion<span class="sc">/</span>PEA,</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>         <span class="st">'Ocupación demandante'</span>       <span class="ot">=</span> Ocupacion_demandate<span class="sc">/</span>PEA,</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>         <span class="st">'Subocupación'</span>               <span class="ot">=</span> Subocupacion<span class="sc">/</span>PEA,</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>         <span class="st">'Subocupación demandante'</span>    <span class="ot">=</span> Suboc_demandante<span class="sc">/</span>PEA,</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>         <span class="st">'Subocupación no demandante'</span> <span class="ot">=</span> Suboc_no_demand<span class="sc">/</span>PEA) <span class="sc">|&gt;</span> </span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ANO4,TRIMESTRE,Actividad<span class="sc">:</span><span class="st">'Subocupación no demandante'</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="st">"all"</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>tabla_2 <span class="ot">&lt;-</span> ind_2022 <span class="sc">|&gt;</span> </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ANO4,TRIMESTRE) <span class="sc">|&gt;</span> </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Poblacion          =</span> <span class="fu">sum</span>(PONDERA),</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">Ocupacion          =</span> <span class="fu">sum</span>(PONDERA[ESTADO <span class="sc">==</span> <span class="dv">1</span>]),</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">Desocupacion       =</span> <span class="fu">sum</span>(PONDERA[ESTADO <span class="sc">==</span> <span class="dv">2</span>]),</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">PEA                =</span> Ocupacion <span class="sc">+</span> Desocupacion,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">Ocupacion_demandate =</span> <span class="fu">sum</span>(PONDERA[ESTADO <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> PP03J <span class="sc">==</span><span class="dv">1</span>]),</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">Suboc_demandante   =</span> <span class="fu">sum</span>(PONDERA[ESTADO <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> INTENSI <span class="sc">==</span><span class="dv">1</span> <span class="sc">&amp;</span> PP03J<span class="sc">==</span><span class="dv">1</span>]),</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>            <span class="at">Suboc_no_demand    =</span> <span class="fu">sum</span>(PONDERA[ESTADO <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> INTENSI <span class="sc">==</span><span class="dv">1</span> <span class="sc">&amp;</span> PP03J <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">9</span>)]),</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>            <span class="at">Subocupacion       =</span> Suboc_demandante <span class="sc">+</span> Suboc_no_demand) <span class="sc">|&gt;</span> </span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">'Actividad'</span>                  <span class="ot">=</span> PEA<span class="sc">/</span>Poblacion,</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>         <span class="st">'Empleo'</span>                     <span class="ot">=</span> Ocupacion<span class="sc">/</span>Poblacion,</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>         <span class="st">'Desocupación'</span>               <span class="ot">=</span> Desocupacion<span class="sc">/</span>PEA,</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>         <span class="st">'Ocupación demandante'</span>       <span class="ot">=</span> Ocupacion_demandate<span class="sc">/</span>PEA,</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>         <span class="st">'Subocupación'</span>               <span class="ot">=</span> Subocupacion<span class="sc">/</span>PEA,</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>         <span class="st">'Subocupación demandante'</span>    <span class="ot">=</span> Suboc_demandante<span class="sc">/</span>PEA,</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>         <span class="st">'Subocupación no demandante'</span> <span class="ot">=</span> Suboc_no_demand<span class="sc">/</span>PEA) <span class="sc">|&gt;</span> </span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ANO4,TRIMESTRE,Actividad<span class="sc">:</span><span class="st">'Subocupación no demandante'</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'ANO4'. You can override using the
 `.groups` argument.</code></pre>
@@ -1325,24 +1321,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>tabla_4  </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="ximbmudvrc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="svdxqdzxyn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#ximbmudvrc table {
+#svdxqdzxyn table {
   font-family: Montserrat, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ximbmudvrc thead, #ximbmudvrc tbody, #ximbmudvrc tfoot, #ximbmudvrc tr, #ximbmudvrc td, #ximbmudvrc th {
+#svdxqdzxyn thead, #svdxqdzxyn tbody, #svdxqdzxyn tfoot, #svdxqdzxyn tr, #svdxqdzxyn td, #svdxqdzxyn th {
   border-style: none;
 }
 
-#ximbmudvrc p {
+#svdxqdzxyn p {
   margin: 0;
   padding: 0;
 }
 
-#ximbmudvrc .gt_table {
+#svdxqdzxyn .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1368,12 +1364,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#ximbmudvrc .gt_caption {
+#svdxqdzxyn .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ximbmudvrc .gt_title {
+#svdxqdzxyn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1385,7 +1381,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#ximbmudvrc .gt_subtitle {
+#svdxqdzxyn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1397,7 +1393,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#ximbmudvrc .gt_heading {
+#svdxqdzxyn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1409,13 +1405,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ximbmudvrc .gt_bottom_border {
+#svdxqdzxyn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ximbmudvrc .gt_col_headings {
+#svdxqdzxyn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1430,7 +1426,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ximbmudvrc .gt_col_heading {
+#svdxqdzxyn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1450,7 +1446,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#ximbmudvrc .gt_column_spanner_outer {
+#svdxqdzxyn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1462,15 +1458,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#ximbmudvrc .gt_column_spanner_outer:first-child {
+#svdxqdzxyn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ximbmudvrc .gt_column_spanner_outer:last-child {
+#svdxqdzxyn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ximbmudvrc .gt_column_spanner {
+#svdxqdzxyn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1482,11 +1478,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#ximbmudvrc .gt_spanner_row {
+#svdxqdzxyn .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ximbmudvrc .gt_group_heading {
+#svdxqdzxyn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1512,7 +1508,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#ximbmudvrc .gt_empty_group_heading {
+#svdxqdzxyn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1527,15 +1523,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#ximbmudvrc .gt_from_md > :first-child {
+#svdxqdzxyn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ximbmudvrc .gt_from_md > :last-child {
+#svdxqdzxyn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ximbmudvrc .gt_row {
+#svdxqdzxyn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1554,7 +1550,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#ximbmudvrc .gt_stub {
+#svdxqdzxyn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1567,7 +1563,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ximbmudvrc .gt_stub_row_group {
+#svdxqdzxyn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1581,15 +1577,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#ximbmudvrc .gt_row_group_first td {
+#svdxqdzxyn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ximbmudvrc .gt_row_group_first th {
+#svdxqdzxyn .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ximbmudvrc .gt_summary_row {
+#svdxqdzxyn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1599,16 +1595,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ximbmudvrc .gt_first_summary_row {
+#svdxqdzxyn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ximbmudvrc .gt_first_summary_row.thick {
+#svdxqdzxyn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ximbmudvrc .gt_last_summary_row {
+#svdxqdzxyn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1618,7 +1614,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#ximbmudvrc .gt_grand_summary_row {
+#svdxqdzxyn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1628,7 +1624,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ximbmudvrc .gt_first_grand_summary_row {
+#svdxqdzxyn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1638,7 +1634,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#ximbmudvrc .gt_last_grand_summary_row_top {
+#svdxqdzxyn .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1648,11 +1644,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#ximbmudvrc .gt_striped {
+#svdxqdzxyn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ximbmudvrc .gt_table_body {
+#svdxqdzxyn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1661,7 +1657,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#ximbmudvrc .gt_footnotes {
+#svdxqdzxyn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1675,7 +1671,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ximbmudvrc .gt_footnote {
+#svdxqdzxyn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1684,7 +1680,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ximbmudvrc .gt_sourcenotes {
+#svdxqdzxyn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1698,7 +1694,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ximbmudvrc .gt_sourcenote {
+#svdxqdzxyn .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1706,63 +1702,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ximbmudvrc .gt_left {
+#svdxqdzxyn .gt_left {
   text-align: left;
 }
 
-#ximbmudvrc .gt_center {
+#svdxqdzxyn .gt_center {
   text-align: center;
 }
 
-#ximbmudvrc .gt_right {
+#svdxqdzxyn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ximbmudvrc .gt_font_normal {
+#svdxqdzxyn .gt_font_normal {
   font-weight: normal;
 }
 
-#ximbmudvrc .gt_font_bold {
+#svdxqdzxyn .gt_font_bold {
   font-weight: bold;
 }
 
-#ximbmudvrc .gt_font_italic {
+#svdxqdzxyn .gt_font_italic {
   font-style: italic;
 }
 
-#ximbmudvrc .gt_super {
+#svdxqdzxyn .gt_super {
   font-size: 65%;
 }
 
-#ximbmudvrc .gt_footnote_marks {
+#svdxqdzxyn .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ximbmudvrc .gt_asterisk {
+#svdxqdzxyn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ximbmudvrc .gt_indent_1 {
+#svdxqdzxyn .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ximbmudvrc .gt_indent_2 {
+#svdxqdzxyn .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ximbmudvrc .gt_indent_3 {
+#svdxqdzxyn .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ximbmudvrc .gt_indent_4 {
+#svdxqdzxyn .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ximbmudvrc .gt_indent_5 {
+#svdxqdzxyn .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
