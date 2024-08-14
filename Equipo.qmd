@@ -13,7 +13,7 @@ Socióloga especializada en gestión y políticas culturales y maestranda en Gen
 
 ### Andrea Gomez Vargas
 
-![fotografía Andrea Gómez Vargas](https://rladies.org/about-us/global-team/img/andrea_gomez_vargas_hud4edc5f272eef1570620fc081b8d54d1_7642869_200x200_fit_box_3.png){width="20%" fig-align="left" style="border-radius: 80%;"}
+![fotografía Andrea Gómez Vargas](https://avatars.githubusercontent.com/u/45582182?v=4){width="20%" fig-align="left" style="border-radius: 80%;"}
 
 Socióloga con orientación en estudios de Género(s) y Derechos Humanos. Actualmente se desempeña como Analista de Estadísticas Poblacionales en el Instituto Nacional de Estadística y Censos - INDEC, también ejerzo la docencia universitaria en ciencia sociales y ciencia de datos.
 

@@ -1,26 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Introducción al Análisis de la Encuesta Permanente de Hogares (EPH) con R",
-    "section": "",
-    "text": "Taller organizado por R-Ladies Buenos Aires & el Núcleo de Innovaciòn Social para del ciclo de formaciòn complementaria de la carrera de Sociologìa de la Facultad de Ciencias Sociales de la UBA.\nEn esta ocasión vamos a presentar la potencia de la EPH y {tidyverse} y a mostrarles cómo podemos obtener información directamente con el paquete {eph} y traducirla en indicadores para el análisis de ciencias sociales.\n\n\n\nLicencia de Creative Commons"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "Equipo.html",
-    "href": "Equipo.html",
-    "title": "¿Quiénes somos?",
-    "section": "",
-    "text": "Betsy Cohen\n\n\n\nfotografía Betsy Cohen\n\n\nSocióloga especializada en gestión y políticas culturales y maestranda en Generación y Análisis de Información Estadística de UNTREF. Actualmente se desempeña como analista de datos en el Ministerio de Cultura de la Nación y colabora en diversos proyectos de investigación de manera independiente.\n\ncontacto: betsabecohen@gmail.com\nlinkedin: Betsabé Laila Cohen\n\n\n\nAndrea Gomez Vargas\n\n\n\nfotografía Andrea Gómez Vargas\n\n\nSocióloga con orientación en estudios de Género(s) y Derechos Humanos. Actualmente se desempeña como Analista de Estadísticas Poblacionales en el Instituto Nacional de Estadística y Censos - INDEC, también ejerzo la docencia universitaria en ciencia sociales y ciencia de datos.\n\ncontacto: andrea@rladies.org\nwebsite: soyandrea.netlify.app"
-  },
-  {
     "objectID": "Práctica.html",
     "href": "Práctica.html",
     "title": "Práctica EPH",
@@ -40,6 +19,20 @@
     "title": "Práctica EPH",
     "section": "Variables de la Base EPH",
     "text": "Variables de la Base EPH\nPara hacer la tabla vamos a trabajar con las siguientes variables de la base EPH:\n\nPONDERA: Es el factor de expansión para cada unidad de análisis\nESTADO: Indica la condición de actividad y puede tomar los valores:\n\n0 = Entrevista individual no realizada (no respuesta al cuestionario individual)\n1 = Ocupado\n2 = Desocupado\n3 = Inactivo\n4 = Menor de 10 años\n\nPP03J: Es la pregunta: Aparte de este/os trabajo/s, ¿estuvo buscando algún empleo / ocupación /actividad?, que toma los valores:\n\n1 = Sí\n2 = No\n9 = Ns/Nr\n\nINTENSI: Refiere a la intensidad de la carga horaria laboral y cuyas categorías son:\n\n1 = Subocupado por insuficiencia horaria\n2 = Ocupado pleno\n3 = Sobreocupado\n4 = Ocupado que no trabajó en la semana\n9 = Ns/Nr"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Introducción al Análisis de la Encuesta Permanente de Hogares (EPH) con R",
+    "section": "",
+    "text": "Taller organizado por R-Ladies Buenos Aires & el Núcleo de Innovaciòn Social para del ciclo de formaciòn complementaria de la carrera de Sociologìa de la Facultad de Ciencias Sociales de la UBA.\nEn esta ocasión vamos a presentar la potencia de la EPH y {tidyverse} y a mostrarles cómo podemos obtener información directamente con el paquete {eph} y traducirla en indicadores para el análisis de ciencias sociales.\n\n\n\nLicencia de Creative Commons"
+  },
+  {
+    "objectID": "Equipo.html",
+    "href": "Equipo.html",
+    "title": "¿Quiénes somos?",
+    "section": "",
+    "text": "Betsy Cohen\n\n\n\nfotografía Betsy Cohen\n\n\nSocióloga especializada en gestión y políticas culturales y maestranda en Generación y Análisis de Información Estadística de UNTREF. Actualmente se desempeña como analista de datos en el Ministerio de Cultura de la Nación y colabora en diversos proyectos de investigación de manera independiente.\n\ncontacto: betsabecohen@gmail.com\nlinkedin: Betsabé Laila Cohen\n\n\n\nAndrea Gomez Vargas\n\n\n\nfotografía Andrea Gómez Vargas\n\n\nSocióloga con orientación en estudios de Género(s) y Derechos Humanos. Actualmente se desempeña como Analista de Estadísticas Poblacionales en el Instituto Nacional de Estadística y Censos - INDEC, también ejerzo la docencia universitaria en ciencia sociales y ciencia de datos.\n\ncontacto: andrea@rladies.org\nwebsite: soyandrea.netlify.app"
   },
   {
     "objectID": "Licencia.html",
